@@ -27,6 +27,7 @@ devel-check.out
 *.dx64fsl
 *.fas
 *.fasl
+*.fasp
 *.lbin
 *.lib
 *.lx32fsl

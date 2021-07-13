@@ -654,7 +654,7 @@ clean-lite:
 # (since there could be many executables that one prefers not to delete),
 # except for *osaved_acl2* files.
 	rm -f *.o *#* *.c *.h *.data gazonk.* workxxx* workyyy* *.lib \
-	  *.fasl *.fas *.sparcf *.ufsl *.64ufasl *.ufasl *.dfsl *.dxl \
+	  *.fasl *.fas *.sparcf *.ufsl *.64ufasl *.ufasl *.dfsl *.dxl *.fasp \
 	  *.d64fsl *.dx64fsl *.lx64fsl \
 	  *.lx32fsl *.x86f *.sse2f *.o *.fn \
 	  TAGS TAGS-acl2-doc acl2-status.txt acl2r.lisp acl2-proclaims.lisp \
@@ -662,7 +662,7 @@ clean-lite:
 	rm -rf saved
 	rm -f doc/*.o doc/*#* doc/*.c doc/*.h doc/*.data doc/gazonk.* \
 	   doc/workxxx doc/workyyy doc/*.lib \
-	   doc/*.fasl doc/*.fas doc/*.sparcf doc/*.ufsl doc/*.64ufasl doc/*.ufasl doc/*.dfsl \
+	   doc/*.fasl doc/*.fas doc/*.sparcf doc/*.ufsl doc/*.64ufasl doc/*.ufasl doc/*.dfsl doc/*.fasp \
 	   doc/*.dxl doc/*.d64fsl doc/*.dx64fsl doc/*.lx64fsl \
 	   doc/*.lx32fsl doc/*.x86f doc/*.sse2f doc/*.o doc/*.fn \
 	   doc/*.cert doc/*.port doc/*.out \
