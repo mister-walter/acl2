@@ -363,6 +363,8 @@
 ; files, but we were unable to do the analogous thing successfully for
 ; custom:*terminal-encoding*, even when restricting that assignment to
 ; (interactive-stream-p *terminal-io*).
+  #+clasp
+  (setq ext:*default-external-format* :iso-8859-1)
 
   #+cmu
   (setq *default-external-format* :iso-8859-1)
@@ -1142,7 +1144,8 @@ ACL2 from scratch.")
            #+clisp :clisp
            #+cmu :cmu
            #+lispworks :lispworks
-           #-(or gcl ccl sbcl allegro clisp cmu lispworks)
+           #+clasp :clasp
+           #-(or gcl ccl sbcl allegro clisp cmu lispworks clasp)
            (error
             "Error detected in initialize-state-globals: ~%The underlying ~
              host Lisp appears not to support ACL2. ~%Contact the ACL2 ~
@@ -1756,6 +1759,9 @@ which is saved just in case it's needed later.")
 
                (and (eql char #\#)
                     (member subchar '(#\@ #\! #\u #\Y #\Z)))
+               #+clasp
+               (and (eql char #\#)
+                    (member subchar '(#\!)))
                #+allegro
 
 ; The #u reader has been defined in Allegro CL to invoke parse-uri.  It seems

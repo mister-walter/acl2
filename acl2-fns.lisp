@@ -1687,14 +1687,16 @@ notation causes an error and (b) the use of ,. is not permitted."
                  (cdr (assoc (intern string :keyword)
                              ext::*environment-list*
                              :test #'eq))))
-          #+(or gcl allegro lispworks ccl sbcl clisp)
+          #+(or gcl allegro lispworks ccl sbcl clisp clasp)
           (let ((fn
                  #+gcl       'si::getenv
                  #+allegro   'sys::getenv
                  #+lispworks 'hcl::getenv
                  #+ccl       'ccl::getenv
                  #+sbcl      'sb-ext::posix-getenv
-                 #+clisp     'ext:getenv))
+                 #+clisp     'ext:getenv
+                 #+clasp     'ext:getenv
+                 ))
             (and (fboundp fn)
                  (funcall fn string))))
          (msg (and val

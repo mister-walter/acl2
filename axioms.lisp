@@ -28195,7 +28195,11 @@ Lisp definition."
 ; a cache that takes up a lot of memory, as it holds a world in each entry.
 
   10)
+#+clasp
+(sys:defconstant-equal *ev-fncall-w-guard1-cache-init*
+  (cons 0 (make-list *ev-fncall-w-guard1-cache-size*)))
 
+#-clasp
 (defconstant *ev-fncall-w-guard1-cache-init*
   (cons 0 (make-list *ev-fncall-w-guard1-cache-size*)))
 
