@@ -52,6 +52,7 @@
 (include-book "find-index")
 (include-book "firstn-def")
 (include-book "firstn")
+(include-book "repeat-def")
 (include-book "repeat")
 (include-book "reverse-list-def")
 (include-book "reverse-list")
@@ -102,3 +103,6 @@
 (include-book "replace-item")
 
 (include-book "index-of-subseq")
+
+(include-book "filter-non-members")
+(include-book "union-equal-alt")
