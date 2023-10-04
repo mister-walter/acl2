@@ -33,23 +33,33 @@
 function katexUpdate()
 {
    console.log("Called katexUpdate");
-   var formula = String($("#katexformula").val());
-   var newdiv = jQuery("<span></span>");
+   // var formula = String($("#katexformula").val());
+   // var newdiv = jQuery("<span></span>");
+   const formula_input = document.getElementById("katexformula");
+   const formula_text = formula_input.textContent;
+   const tmp_target = document.createElement("span");
+   const view_element = document.getElementById("rendermehere");
    try {
-      katex.render(formula, newdiv.get(0));
-      $("#rendermehere").html(newdiv);
+      katex.render(formula_text, tmp_target);
+      view_element.innerHTML = tmp_target.outerHTML;
    }
    catch (e) {
-      $("#rendermehere").html(e.message);
+      view_element.textContent = e.message;
+      // $("#rendermehere").html(e.message);
    }
 }
 
-$(document).ready(function()
-{
-    katexUpdate();
-    $("#katexformula").on("change keyup paste", function() {
-	katexUpdate();
-    });
+document.addEventListener('DOMContentLoaded', function() {
+   katexUpdate();
+   const formula_input = document.getElementById("katexformula");
+   ["change", "keyup", "paste"].forEach(evt => formula_input.addEventListener(evt, () => katexUpdate()));
 });
+// $(document).ready(function()
+// {
+//     katexUpdate();
+//     $("#katexformula").on("change keyup paste", function() {
+// 	katexUpdate();
+//     });
+// });
 
 

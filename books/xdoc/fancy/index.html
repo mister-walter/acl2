@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head id="#head">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
 ; XDOC Documentation System for ACL2
 ; Copyright (C) 2009-2013 Centaur Technology
 ;
@@ -35,171 +36,156 @@
 ; Original author: Jared Davis <jared@centtech.com>
 -->
 
-<title>XDOC (Loading)</title>
-<link rel="shortcut icon" href="favicon.png"/>
+  <title>XDOC (Loading)</title>
+  <link rel="shortcut icon" href="favicon.png" />
 
-<script>
-<!--
-function abandonShip () {
-  document.write("<body><p><b>Error: Unsupported Browser</b></p>");
-  document.write("<p>This XDOC manual requires features that are "
-   + "not implemented by your web browser.<br/>  Please try again with a "
-   + "supported browser, such as:</p><ul>"
-   + "<li>Mozilla Firefox (any recent version)</li>"
-   + "<li>Chromium (any recent version)</li>"
-   + "<li>Google Chrome (any recent version)</li>"
-   + "<li>Microsoft Internet Explorer (Version 10 or later)</li>"
-   + "<li>Apple Safari (Version 5 or later)</li>"
-   + "<li>Opera (Version 18 or later)</li>"
-   + "</ul>"
-   + "<p>Other modern browsers may also work.</p>");
+  <script>
+    <!--
+    function abandonShip () {
+      document.write("<body><p><b>Error: Unsupported Browser</b></p>");
+      document.write("<p>This XDOC manual requires features that are "
+       + "not implemented by your web browser.<br/>  Please try again with a "
+       + "supported browser, such as:</p><ul>"
+       + "<li>Mozilla Firefox (any recent version)</li>"
+       + "<li>Chromium (any recent version)</li>"
+       + "<li>Google Chrome (any recent version)</li>"
+       + "<li>Microsoft Internet Explorer (Version 10 or later)</li>"
+       + "<li>Apple Safari (Version 5 or later)</li>"
+       + "<li>Opera (Version 18 or later)</li>"
+       + "</ul>"
+       + "<p>Other modern browsers may also work.</p>");
+    
+      // try to prevent rendering anything else in legitimate ways
+      if (window.stop) { window.stop(); }
+      if (document.execCommand) { document.execCommand("Stop"); }
+    
+      // last resort, make the whole page look like some crazy, unknown
+      // script so that the browser hopefully won't render it.
+      document.write("<script type='text/undefined'>");
+    }
+    
+    if (!window.history || !window.history.replaceState) {
+      // I've tested that this check gets triggered on IE8 and IE9.  It's
+      // important to not allow IE8, because Windows XP users are stuck
+      // with it, so unfortunately it's still widely used.
+      abandonShip();
+    }
+    // -->
+  </script>
 
-  // try to prevent rendering anything else in legitimate ways
-  if (window.stop) { window.stop(); }
-  if (document.execCommand) { document.execCommand("Stop"); }
+  <!-- General Libraries -->
+  <script src="lib/jquery-3.6.4.min.js"></script>
+  <script src="lib/jquery.powertip.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="lib/jquery.powertip.css" />
+  <script src="lib/typeahead-bundle/bloodhound.js"></script>
+  <script src="lib/typeahead-bundle/typeahead.jquery.min.js"></script>
+  <script id="katexScript" src="lib/katex/katex.min.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="lib/katex/katex.min.css" />
 
-  // last resort, make the whole page look like some crazy, unknown
-  // script so that the browser hopefully won't render it.
-  document.write("<script type='text/undefined'>");
-}
+  <!-- Actual XDOC stuff -->
+  <!-- <script src="render.js"></script> -->
+  <!-- <script src="config.js"></script> -->
+  <!-- <script src="xdoc_index.js"></script> -->
+  <!-- <script src="xslt.js"></script> -->
+  <script type="module" src="xdoc.js"></script>
 
-if (!window.history || !window.history.replaceState) {
-  // I've tested that this check gets triggered on IE8 and IE9.  It's
-  // important to not allow IE8, because Windows XP users are stuck
-  // with it, so unfortunately it's still widely used.
-  abandonShip();
-}
-// -->
-</script>
-
-<!-- General Libraries -->
-<script src="lib/jquery-3.6.4.min.js"></script>
-<script src="lib/jquery.base64.js"></script>
-<script src="lib/jquery.powertip.min.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/jquery.powertip.css"/>
-<script src="lib/typeahead-bundle/bloodhound.js"></script>
-<script src="lib/typeahead-bundle/typeahead.jquery.min.js"></script>
-<script src="lib/lazyload.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/katex/katex.min.css"/>
-
-<!-- Actual XDOC stuff -->
-<script src="render.js"></script>
-<script src="config.js"></script>
-<script src="xdoc_index.js"></script>
-<script src="xslt.js"></script>
-<script src="xdoc.js"></script>
-
-<!-- Font selection.
+  <!-- Font selection.
      If you modify these, also modify:
          print.html - need to copy the links
          style.scss  - search for font names and replace everywhere
          print.css  - search for font names and replace everywhere
          xdoc.js    - printerFriendly function
   -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Noto+Serif&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="desktop.css" media="all and (min-width: 50em)"/>
-<link rel="stylesheet" type="text/css" href="mobile.css" media="all and (max-width: 50em)"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Noto+Serif&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="desktop.css" media="all and (min-width: 50em)" />
+  <link rel="stylesheet" type="text/css" href="mobile.css" media="all and (max-width: 50em)" />
+  <link rel="preload" as="fetch" href="./xindex.json" />
 
 </head>
+
 <body>
 
-<div id="top">
+  <nav id="top" class="top-bar">
+    <button id="navToggle" class="unstyled-button mobileonly">
+      <img class="toolbutton" src="menu_mobile.png" alt="Menu"
+        data-powertip="<p>Open or close the navigation menu.</p>">
+    </button>
+    <button id="goToXDocTop" class="unstyled-button desktoponly">
+      <img class="toolbutton" src="xdoc-home.png" alt="Top">
+      <!-- data-powertip="<p>Go to the Top topic.</p>"> -->
+    </button>
+    <div class="desktoponly">
+      <button id="navTreeMode" class="unstyled-button desktoponly">
+        <img class="toolbutton" src="view_tree.png" alt="Tree Navigation"
+          data-powertip="<p>Use hierarchical navigation.</p>" />
+      </button>
+      <button id="navFlatMode" class="unstyled-button desktoponly">
+        <img class="toolbutton" src="view_flat.png" alt="Flat Navigation" data-powertip="<p>Use flat navigation.</p>" />
+      </button>
+    </div>
+    <div id="letters" class="desktoponly"></div>
+    <form id="jumpform">
+      <label id="jumpmsg" data-powertip="<p>If you know what topic you want, you
+              can type its symbol-name here (without
+                                            a package name), then choose the match
+                                            when it comes up.</p>">
+        Jump to </label>
+      <input id="jump" type="text" class="typeahead" placeholder="loading..." disabled="disabled" accesskey="/" />
+      <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" hidefocus="true"
+        tabindex="-1" />
+    </form>
+    <form id="searchform">
+      <label id="searchmsg">
+        Search </label>
+      <input id="searchbox" type="text" placeholder="loading..." disabled="disabled" />
+      <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" hidefocus="true"
+        tabindex="-1" />
+    </form>
 
-  <table border="0" id="toolbar">
-    <tr>
-      <th class="mobileonly">
-	<a href="javascript:navToggleVisible()">
-	  <img class="toolbutton" src="menu_mobile.png" alt="Menu"
-	       data-powertip="<p>Open or close the navigation menu.</p>">
-	</a>
-      </th>
-      <th class="desktoponly">
-	<a href="javascript:actionGoKey('ACL2____TOP')">
-	  <img class="toolbutton" src="xdoc-home.png" alt="Top"
-	       data-powertip="<p>Go to the Top topic.</p>">
-	</a>
-        &#160; &#160;
-	<a href="javascript:navTree()">
-	  <img class="toolbutton" src="view_tree.png" alt="Tree Navigation"
-	       data-powertip="<p>Use hierarchical navigation.</p>"/>
-	</a>
-	<a href="javascript:navFlat()">
-	  <img class="toolbutton" src="view_flat.png" alt="Flat Navigation"
-	       data-powertip="<p>Use flat navigation.</p>"/>
-	</a>
-      </th>
-      <th class="desktoponly" id="letters"></th>
-      <td>
- 	<form id="jumpform">
-	<label id="jumpmsg" data-powertip="<p>If you know what topic you want, you
-					  can type its symbol-name here (without
-                                          a package name), then choose the match
-                                          when it comes up.</p>">
-	  Jump to </label>
-	<input id="jump" type="text" class="typeahead"
-	       placeholder="loading..."
-	       disabled="disabled" accesskey="/"/>
-	<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-	       hidefocus="true" tabindex="-1"/>
-	</form>
-      </td>
-      <td>
-	<form onsubmit="{searchSubmit(); return false;}">
-	<label id="searchmsg">
-  	  Search </label>
-        <input id="searchbox" type="text" placeholder="loading..."
-	       disabled="disabled"/>
-	<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-	       hidefocus="true" tabindex="-1"/>
-	</form>
-      </td>
-      <th class="desktoponly">
-        &#160; &#160;&#160;
-	<a href="javascript:printerFriendly()">
-	  <img class="rtoolbutton" src="printer.png" alt="Printer Friendly"
-	       data-powertip="<p>Launch a printer-friendly version of this page, in a new window.</p>"/>
-	</a>
-	<a target="DownloadWindow" href="download/index.html">
-	  <img class="rtoolbutton" src="download.png" alt="Download"
-	       data-powertip="<p>Download a zipped copy of this manual (for
-	       faster or offline browsing).</p>"/>
-	</a>
+    <div class="desktoponly">
+      <button id="printerFriendly" class="unstyled-button desktoponly">
+        <img class="rtoolbutton" src="printer.png" alt="Printer Friendly"
+          data-powertip="<p>Launch a printer-friendly version of this page, in a new window.</p>" />
+      </button>
+      <a target="DownloadWindow" href="download/index.html" class="desktoponly">
+        <img class="rtoolbutton" src="download.png" alt="Download" data-powertip="<p>Download a zipped copy of this manual (for
+	       faster or offline browsing).</p>" />
+      </a>
+    </div>
 
-      </th>
+  </nav>
 
-    </tr>
-  </table>
+  <div id="left">
+    <div id="nav">
+      <p>Loading...</p>
+    </div>
 
-</div>
-
-<div id="left">
-  <div id="nav">
-    <p>Loading...</p>
+    <div id="flat" style="display: none">
+      <p>Loading...</p>
+    </div>
   </div>
 
-  <div id="flat" style="display: none">
-    <p>Loading...</p>
+  <div id="right">
+    <div id="parents" style="display: none">
+    </div>
+    <div id="data">
+      <p>Loading...</p>
+    </div>
   </div>
-</div>
 
-<div id="right">
-  <div id="parents" style="display: none">
+  <div id="still_loading" style="display: none">
   </div>
-  <div id="data">
-    <p>Loading...</p>
-  </div>
-</div>
 
-<div id="still_loading" style="display: none">
-</div>
-
-<!--
+  <!--
 <div id="bottom">
 Bottom
 </div>
 -->
 
 </body>
+
 </html>

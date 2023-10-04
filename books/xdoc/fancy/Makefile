@@ -5,11 +5,12 @@
 all: desktop.css mobile.css render.js
 
 render.js : render.xsl
-	echo "var xslt_base64 = \"" > render.tmp
+	echo "const xslt_base64 = \"" > render.tmp
 	base64 < render.xsl >> render.tmp
 	echo "\";" >> render.tmp
 	tr -d '\n' < render.tmp > render.js
 	rm render.tmp
+	printf "\n%s" "export { xslt_base64 }" >> render.js
 	ls -la render.js
 
 # We don't need to convert render-html.xsl, because we don't need it

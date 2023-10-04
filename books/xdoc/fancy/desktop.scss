@@ -202,9 +202,11 @@ body {
     width: 450px;
 }
 
-
-
-
+.unstyled-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
 
 // -------------------- CONTENT -----------------------------
 

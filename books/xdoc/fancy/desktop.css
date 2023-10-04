@@ -42,9 +42,9 @@ h3, h4, h5, h3 .tt, h4 .tt, h5 .tt, h3 .v, h4 .v, h5 .v { color: #FF6700; }
 
 #letters { padding-left: .4em; }
 
-#letters a { color: #3C9DD0; }
+#letters > button { color: #3C9DD0; font-weight: bold; font-size: medium; }
 
-#letters a:hover { text-decoration: none; color: white; background-color: #086CA2; }
+#letters > button:hover { text-decoration: none; color: white; background-color: #086CA2; }
 
 .dat_long { border-color: #FF6700; }
 
@@ -58,7 +58,7 @@ body { font-family: "Noto Serif", serif; }
 
 dt, .hindex, #flat, #still_loading, .xtable th { font-family: "Lato", sans-serif; }
 
-.code, .srclink, .tt, #letters, .from, .v { font-family: "Source Code Pro", monospace; }
+.code, .srclink, .tt, #letters > button, .from, .v { font-family: "Source Code Pro", monospace; }
 
 /* ----------------------- PARENTS DISPLAY ----------------------- */
 #parents { padding: 10px; border-bottom-width: 1px; border-bottom-style: solid; }
@@ -214,3 +214,70 @@ li .code { margin-left: 1em; }
 .xtable { margin-left: 1.5em; margin-right: 1.5em; }
 
 /*# sourceMappingURL=desktop.css.map */
+.unstyled-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+ul.nav-list {
+    padding-left: 0.5em;
+    list-style-type: none;
+    /* list-style-image: url("./plus.png"); */
+}
+
+li.nav-leaf-node::before {
+    content: url("./leaf.png");
+}
+
+.nav-tree-node, .nav-leaf-node {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* .nav-tree-node > details > summary { 
+    display : block;
+    cursor  : pointer;
+}  */
+.nav-tree-node > details[open] > summary::marker,
+.nav-tree-node > details[open] > -webkit-details-marker { 
+    content: url("./minus.png");
+}
+
+.nav-tree-node > details > summary::marker,
+.nav-tree-node > details > -webkit-details-marker { 
+    content: url("./plus.png");
+}
+
+.nav-flat-list {
+    list-style-type: none;
+}
+
+.popup {
+    display: none;
+    width: max-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5em;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.popup[data-show] {
+    display: block;
+    opacity: 1;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#goToXDocTop {
+    margin-left: 0.5em;
+}

@@ -45,7 +45,7 @@
 // Example Syntax:
 // var XDATAGET = "http://my-server/cgi-bin/my-manual/xdataget.pl";
 
-var XDATAGET = "";
+const XDATAGET = "";
 
 // XDOCTITLE -- You only need to change this if you want to customize the title
 // that your web pages will display as.  By default pages will be shown as, e.g.,
@@ -68,4 +68,6 @@ var XDATAGET = "";
 // And so forth.  You could of course provide some alternate description for
 // internal manuals at organizations, e.g., "Centaur FV Manual" or whatever.
 
-var XDOCTITLE = "XDOC";
+const XDOCTITLE = "XDOC";
+
+export { XDATAGET, XDOCTITLE };

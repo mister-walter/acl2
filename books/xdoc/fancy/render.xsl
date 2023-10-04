@@ -59,7 +59,8 @@
       a href="index.html?topic={@topic}" class="seelink" data-topic="{@topic}"
       -->
   <!-- try 7: reasonably sensible and works!!! woohoo!!! -->
-  <a href="index.html?topic={@topic}" onclick="return dolink(event, '{@topic}');">
+  <!-- <a href="index.html?topic={@topic}" onclick="return dolink(event, '{@topic}');"> -->
+  <a href="index.html?topic={@topic}" see-topic="{@topic}"> 
     <xsl:apply-templates/>
   </a>
 </xsl:template>
