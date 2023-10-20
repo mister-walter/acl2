@@ -146,7 +146,7 @@ occurring.
   </li>
   <li>Run Eclipse
     <ol>
-      <li>Download <a href=\"https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.8/run-acl2s.bat\">run-acl2s.bat</a> and save it somewhere memorable. Note that depending on your browser, you might get a warning when you download this file, but you should click \"Keep\" or \"Download Anyways\".</li>
+      <li>Download <a href=\"https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.8/run-acl2s-manual.bat\">run-acl2s-manual.bat</a> and save it somewhere memorable. Note that depending on your browser, you might get a warning when you download this file, but you should click \"Keep\" or \"Download Anyways\".</li>
       <li>Double click on @('run-acl2s.bat') to launch a WSL terminal and Eclipse. A window titled \"Windows protected your PC\" may appear. If so, click on \"More info\" and then \"Run anyways\" at the bottom of the window.</li>
       <li>When Eclipse asks for a workspace, enter @('/mnt/c/<FOLDER>'),
           where @('<FOLDER>') should be replaced with the name of the folder
