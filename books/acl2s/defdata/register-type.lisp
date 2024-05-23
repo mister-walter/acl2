@@ -285,6 +285,7 @@ mutually recursive definitions.
        ;; these two names are constant, but attachable names. TODO: Revisit this decision!
        (enum-name (make-enumerator-symbol name pkg))
        (enum/acc-name (make-uniform-enumerator-symbol name pkg))
+       (enum/acc-seed-property (s+ enum/acc-name '|-SEED-TY| :pkg pkg))
        (def (get1 :def kwd-alist))
        (enum-type? (and (consp def) (equal (car def) 'enum)))
        (normalized-def (get1 :normalized-def kwd-alist))
@@ -354,7 +355,10 @@ mutually recursive definitions.
          (local (defun ,enum/acc-name ,enum/acc-formals
                   (declare (xargs :guard ,enum/acc-guard))
                   (declare (ignorable . ,enum/acc-formals))
-                  (mv ',default-val 0))))
+                  (mv ',default-val 0)))
+         (defthm ,enum/acc-seed-property
+                 (implies ,enum/acc-guard
+                          (unsigned-byte-p 63 (mv-nth 1 (,enum/acc-name ,@enum/acc-formals))))))
 
         (DEFTTAG :defdata-attach)
         (DEFATTACH (,enum-name ,enum) :skip-checks t)
